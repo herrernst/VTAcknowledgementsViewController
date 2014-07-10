@@ -127,16 +127,6 @@ static const CGFloat VTLabelMargin          = 20;
     if (!bundle) {
         NSString *bundlePath = [NSBundle.mainBundle pathForResource:@"VTAcknowledgementsViewController" ofType:@"bundle"];
         bundle = [NSBundle bundleWithPath:bundlePath];
-
-        NSString *language = NSLocale.preferredLanguages.count? NSLocale.preferredLanguages.firstObject: @"en";
-        if (![bundle.localizations containsObject:language]) {
-            language = [language componentsSeparatedByString:@"-"].firstObject;
-        }
-        if ([bundle.localizations containsObject:language]) {
-            bundlePath = [bundle pathForResource:language ofType:@"lproj"];
-        }
-
-        bundle = [NSBundle bundleWithPath:bundlePath] ?: NSBundle.mainBundle;
     }
 
     defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
